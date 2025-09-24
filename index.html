@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Korn Ferry Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- FontAwesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <style>
+        header nav {
+            background-color: transparent;
+        }
+    </style>
+    <style>
+        /* From Uiverse.io by Cornerstone-04 */
+        .cards {
+            perspective: 1000px;
+        }
+
+        .card {
+            background: #002016;
+            border: 2px solid #0a3a2a;
+            border-radius: 10px;
+            position: relative;
+            transform-style: preserve-3d;
+            will-change: transform;
+            transition: transform 0.5s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .card:hover {
+            transform: translateZ(20px) rotateX(12deg) rotateY(12deg);
+        }
+
+        @keyframes spin-slow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .circle-spin {
+            animation: spin-slow 12s linear infinite;
+        }
+
+        .circle-spin-slow {
+            animation: spin-slow 16s linear infinite;
+        }
+
+        .circle-spin-fast {
+            animation: spin-slow 8s linear infinite;
+        }
+
+
+
+        .challenge-btn {
+            border: 2px solid #1DB28A;
+            border-radius: 9999px;
+            padding: 0.5rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.4s ease;
+            background-color: transparent;
+        }
+
+        .challenge-btn:hover {
+            background-color: #1DB28A;
+            color: #0B3B2E;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .challenge-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        #news-slider {
+            transition: transform 0.7s ease-in-out;
+        }
+
+        input,
+        select {
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-[#003a37] text-white font-sans">
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50">
+        <nav id="navbar" class="flex items-center justify-between w-full px-6 py-4 text-white">
+            <a class="flex items-center flex-shrink-0" href="#">
+                <img alt="Logo" class="w-[80px] h-[40px] object-contain"
+                    src="https://storage.googleapis.com/a1aa/image/4b4d5fee-f435-4086-2470-55a8a8a3ee8c.jpg" />
+            </a>
+
+            <ul class="hidden md:flex space-x-8 font-semibold text-sm">
+                <li><a class="hover:underline animate__animated animate__fadeInDown" href="#">Insights</a></li>
+                <li><a class="hover:underline animate__animated animate__fadeInDown animate__delay-2s"
+                        href="#">Expertise</a></li>
+                <li><a class="hover:underline animate__animated animate__fadeInDown animate__delay-1s"
+                        href="#">Solutions</a></li>
+                <li><a class="hover:underline animate__animated animate__fadeInDown animate__delay-2s"
+                        href="#">Careers</a></li>
+                <li><a class="hover:underline animate__animated animate__fadeInDown animate__delay-1s"
+                        href="#">About</a></li>
+                <li><a class="hover:underline animate__animated animate__fadeInDown animate__delay-2s"
+                        href="#">Investors</a></li>
+                <li><a class="hover:underline animate__animated animate__fadeInDown animate__delay-2s"
+                        href="#">Contact</a></li>
+            </ul>
+
+            <div class="flex items-center space-x-4">
+                <button
+                    class="hidden md:block text-white text-lg focus:outline-none animate__animated animate__fadeInRight">
+                    <i class="fas fa-search"></i>
+                </button>
+
+                <button id="nav-toggle"
+                    class="md:hidden text-white text-xl focus:outline-none animate__animated animate__fadeInRight">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile menu -->
+        <ul id="mobile-nav"
+            class="hidden flex-col bg-[#00664f] text-white w-full absolute top-full left-0 p-4 space-y-2 md:hidden font-semibold text-sm animate__animated animate__fadeInDown">
+            <li><a href="#" class="block hover:underline">Insights</a></li>
+            <li><a href="#" class="block hover:underline">Expertise</a></li>
+            <li><a href="#" class="block hover:underline">Solutions</a></li>
+            <li><a href="#" class="block hover:underline">Careers</a></li>
+            <li><a href="#" class="block hover:underline">About</a></li>
+            <li><a href="#" class="block hover:underline">Investors</a></li>
+            <li><a href="#" class="block hover:underline">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- Hero -->
+    <main class="relative z-10">
+        <div class="relative h-[70vh] overflow-hidden">
+            <img alt="Hero Image" class="w-full h-full object-cover"
+                src="https://storage.googleapis.com/a1aa/image/1cfdb73b-de78-4c06-5e77-8b2ae94a6109.jpg" />
+
+            <!-- Overlay -->
+            <div id="hero-overlay"
+                class="absolute inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex flex-col items-center justify-start pt-20 px-6 text-center transition-all duration-500 animate__animated animate__fadeIn">
+                <h1
+                    class="text-[80px] md:text-[120px] font-extralight italic text-gray-300 leading-none break-words animate__animated animate__fadeInDown">
+                    BE <span class="font-extrabold">MORE</span> THAN
+                </h1>
+                <p class="text-white font-bold text-lg md:text-xl max-w-3xl mt-4 animate__animated animate__fadeInUp">
+                    The impact we create spans entire organizations, but always starts with people.
+                </p>
+                <button
+                    class="mt-6 bg-white text-[#00664f] font-semibold text-lg px-6 py-3 rounded animate__animated animate__pulse animate__infinite">
+                    How Can We Help You?
+                </button>
+            </div>
+        </div>
+
+        <section
+            class="max-w-[1280px] mx-auto px-6 -mt-36 grid grid-cols-1 sm:grid-cols-3 gap-6 pb-12 relative z-20 cards">
+
+            <!-- Card 1 -->
+            <article
+                class="card text-white flex flex-col items-center justify-center p-10 text-center h-[355px] group relative">
+                <!-- Content -->
+                <div class="relative z-10">
+                    <p class="font-bold text-sm uppercase mb-3">Explore</p>
+                    <h2 class="font-extrabold text-xl md:text-2xl leading-tight">What People Want From Work</h2>
+                </div>
+
+                <!-- Bottom arrow -->
+                <div
+                    class="absolute bottom-6 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-500 animate-bounce" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article
+                class="card text-white flex flex-col items-center justify-center p-10 text-center h-[355px] group relative">
+                <div class="relative z-10">
+                    <p class="font-bold text-sm uppercase mb-3">Payscale and Korn Ferry: New Partnership</p>
+                    <h2 class="font-extrabold text-xl md:text-2xl leading-tight">Pay Data, Now Integrated</h2>
+                </div>
+                <div
+                    class="absolute bottom-6 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-500 animate-bounce" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article
+                class="card text-white flex flex-col items-center justify-center p-10 text-center h-[355px] group relative">
+                <div class="relative z-10">
+                    <p class="font-bold text-sm uppercase mb-3">Briefings Magazine</p>
+                    <h2 class="font-extrabold text-xl md:text-2xl leading-tight">Dazed &amp; Confused</h2>
+                </div>
+                <div
+                    class="absolute bottom-6 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-500 animate-bounce" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </article>
+        </section>
+
+    </main>
+
+
+
+    <!-- Article Cards Section -->
+    <section class="max-w-7xl mx-auto mt-12 px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Featured Article (Bigger Card) -->
+        <div
+            class="col-span-2 bg-yellow-300 rounded-xl overflow-hidden cursor-pointer transform transition hover:-translate-y-2 hover:shadow-2xl animate__animated animate__fadeInLeft">
+            <img src="https://www.kornferry.com/content/dam/kornferry-v2/insights/briefings/issue-70/briefings-70-cover-1200x627.jpg"
+                alt="Dazed & Confused" class="w-full h-56 object-cover" />
+            <div class="p-6 bg-white text-black">
+                <p class="text-xs uppercase font-semibold mb-2">Briefings Magazine</p>
+                <h3 class="font-bold text-xl">Dazed & Confused</h3>
+            </div>
+        </div>
+
+        <!-- Small Card 1 -->
+        <div
+            class="bg-[#004d48] p-5 rounded-xl cursor-pointer hover:bg-green-800 transition transform hover:-translate-y-2 hover:shadow-xl animate__animated animate__fadeInUp animate__delay-1s">
+            <img src="https://www.kornferry.com/content/dam/kornferry-v2/featured-topics/leadership/eq-perils-375x300.jpg"
+                alt="The Perils of Digitalization" class="mb-4 rounded-md w-full h-40 object-cover" />
+            <h4 class="font-semibold text-green-300 text-lg">The Perils of Digitalizing EQ</h4>
+        </div>
+
+        <!-- Small Card 2 -->
+        <div
+            class="bg-[#004d48] p-5 rounded-xl cursor-pointer hover:bg-green-800 transition transform hover:-translate-y-2 hover:shadow-xl animate__animated animate__fadeInUp animate__delay-2s">
+            <img src="https://www.kornferry.com/content/dam/kornferry-v2/featured-topics/leadership/whiplash-governement-375x300.jpg"
+                alt="Government Playbook" class="mb-4 rounded-md w-full h-40 object-cover" />
+            <h4 class="font-semibold text-green-300 text-lg">The Whiplash Government Playbook</h4>
+        </div>
+    </section>
+
+    <!-- Organization Section -->
+    <section class="max-w-4xl mx-auto mt-20 px-6 text-center animate__animated animate__fadeInUp">
+        <p class="text-lg text-green-400 font-semibold mb-3">Your organization is full of potential</p>
+        <h2
+            class="text-3xl md:text-5xl font-extrabold text-green-500 italic mb-6 leading-tight animate__animated animate__pulse animate__delay-1s">
+            WE’RE HERE TO UNLEASH IT
+        </h2>
+        <p class="text-gray-300 text-lg leading-relaxed">
+            From top executives to frontline employees, we optimize leadership potential and organizational performance.
+            <br />
+            Our innovative solutions focus on talent, transformation, and leadership development to help your business
+            thrive in today’s ever-changing world.
+        </p>
+    </section>
+
+
+    <!-- Video Section -->
+    <section class="mt-20 max-w-5xl mx-auto px-4 relative mb-8">
+        <div class="relative pt-[56.25%] rounded-2xl overflow-hidden shadow-2xl group">
+
+            <!-- Video -->
+            <iframe
+                class="absolute top-0 left-0 w-full h-full rounded-2xl transition-transform duration-700 group-hover:scale-105"
+                src="https://www.kornferry.com/content/dam/kornferry-v2/videos/plus-video.mp4"
+                title="Together We Are More Than" frameborder="0" allowfullscreen>
+            </iframe>
+
+            <!-- Dark Overlay -->
+            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-500"></div>
+
+            <!-- Centered Text -->
+            <div class="absolute inset-0 flex justify-center items-center pointer-events-none">
+                <div
+                    class="text-white text-4xl md:text-5xl font-extrabold text-center drop-shadow-2xl tracking-wide animate__animated animate__fadeInUp">
+                    TOGETHER <br />
+                    WE ARE <br />
+                    <span class="text-green-400">MORE THAN</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Business Challenge Section -->
+    <section class=" py-16 px-4 sm:px-6 lg:px-8">
+        <h2
+            class="text-[#1DB28A] text-center font-extrabold text-3xl sm:text-4xl max-w-4xl mx-auto leading-tight animate__animated animate__fadeInDown">
+            What business challenge are you looking to solve?
+        </h2>
+
+        <!-- Top buttons -->
+        <div class="mt-10 max-w-5xl mx-auto flex flex-wrap justify-center gap-4 text-white text-sm sm:text-base">
+            <button class="challenge-btn group animate__animated animate__fadeInUp animate__delay-1s">
+                Driving organizational change
+                <i
+                    class="fas fa-arrow-right ml-2 text-[#1DB28A] group-hover:translate-x-1 transition-transform duration-300"></i>
+            </button>
+            <button class="challenge-btn group animate__animated animate__fadeInUp animate__delay-2s">
+                Managing talent costs
+                <i
+                    class="fas fa-arrow-right ml-2 text-[#1DB28A] group-hover:translate-x-1 transition-transform duration-300"></i>
+            </button>
+            <button class="challenge-btn group animate__animated animate__fadeInUp animate__delay-3s">
+                Improving sales results
+                <i
+                    class="fas fa-arrow-right ml-2 text-[#1DB28A] group-hover:translate-x-1 transition-transform duration-300"></i>
+            </button>
+            <button class="challenge-btn group animate__animated animate__fadeInUp animate__delay-4s">
+                Scaling recruitment
+                <i
+                    class="fas fa-arrow-right ml-2 text-[#1DB28A] group-hover:translate-x-1 transition-transform duration-300"></i>
+            </button>
+        </div>
+
+        <!-- Bottom buttons -->
+        <div class="mt-6 max-w-3xl mx-auto flex flex-wrap justify-center gap-4 text-white text-sm sm:text-base">
+            <button class="challenge-btn group animate__animated animate__fadeInUp animate__delay-5s">
+                Identifying and developing leaders
+                <i
+                    class="fas fa-arrow-right ml-2 text-[#1DB28A] group-hover:translate-x-1 transition-transform duration-300"></i>
+            </button>
+            <button class="challenge-btn group animate__animated animate__fadeInUp animate__delay-6s">
+                Leveraging talent data
+                <i
+                    class="fas fa-arrow-right ml-2 text-[#1DB28A] group-hover:translate-x-1 transition-transform duration-300"></i>
+            </button>
+            <button class="challenge-btn group animate__animated animate__fadeInUp animate__delay-7s">
+                My next career move
+                <i
+                    class="fas fa-arrow-right ml-2 text-[#1DB28A] group-hover:translate-x-1 transition-transform duration-300"></i>
+            </button>
+        </div>
+
+        <!-- Search form -->
+        <form
+            class="mt-10 max-w-4xl mx-auto flex items-center bg-[#1F4F3A] rounded-xl px-4 py-3 shadow-lg hover:shadow-2xl transition-all duration-500 animate__animated animate__fadeInUp animate__delay-8s"
+            role="search" aria-label="Search business challenges">
+            <input type="search" placeholder="I need to identify future leaders…"
+                class="bg-transparent placeholder-white italic text-white flex-grow focus:outline-none text-sm sm:text-base"
+                aria-label="Search input" />
+            <button type="submit"
+                class="ml-3 bg-[#1DB28A] rounded-full p-3 flex items-center justify-center text-white hover:bg-[#17a77a] transition-all duration-300"
+                aria-label="Search">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+    </section>
+
+    <section class="bg-white py-16 w-full px-4 sm:px-6 lg:px-8 mx-auto text-center w-full">
+        <h3 class="text-[#0B5E40] font-extrabold text-3xl sm:text-4xl mb-8 animate__animated animate__fadeInDown">
+            Korn Ferry in the News
+        </h3>
+
+        <!-- Slider Wrapper -->
+        <div class="relative overflow-hidden">
+            <!-- Slides Container -->
+            <div id="news-slider" class="flex transition-transform duration-700 ease-in-out">
+                <!-- Slide 1 -->
+                <div class="min-w-full flex flex-col items-center justify-center px-4">
+                    <p class="text-[#0B5E40] font-semibold text-lg mb-2">CNBC</p>
+                    <a href="#"
+                        class="text-[#0B5E40] text-lg sm:text-xl underline inline-flex items-center justify-center gap-2 hover:text-[#008a6a]"
+                        target="_blank" rel="noopener noreferrer">
+                        ’Job Hugging’ Has Replaced Job Hopping
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 text-[#0B5E40] group-hover:text-[#008a6a] transition-colors" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="min-w-full flex flex-col items-center justify-center px-4">
+                    <p class="text-[#0B5E40] font-semibold text-lg mb-2">Financial Times</p>
+                    <a href="#"
+                        class="text-[#0B5E40] text-lg sm:text-xl underline inline-flex items-center justify-center gap-2 hover:text-[#008a6a]"
+                        target="_blank" rel="noopener noreferrer">
+                        4 Tips for Finding Growth
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 text-[#0B5E40] group-hover:text-[#008a6a] transition-colors" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="min-w-full flex flex-col items-center justify-center px-4">
+                    <p class="text-[#0B5E40] font-semibold text-lg mb-2">Board Agenda</p>
+                    <a href="#"
+                        class="text-[#0B5E40] text-lg sm:text-xl underline inline-flex items-center justify-center gap-2 hover:text-[#008a6a]"
+                        target="_blank" rel="noopener noreferrer">
+                        How CEOs Are Learning to Pace Themselves
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 text-[#0B5E40] group-hover:text-[#008a6a] transition-colors" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Indicators -->
+            <div class="mt-6 flex justify-center gap-2">
+                <span class="w-6 h-1 bg-[#0B5E40] rounded slider-indicator active"></span>
+                <span class="w-6 h-1 bg-[#D9D9D9] rounded slider-indicator"></span>
+                <span class="w-6 h-1 bg-[#D9D9D9] rounded slider-indicator"></span>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <h1
+        class="text-3xl text-center mt-12 sm:text-4xl md:text-5xl font-extrabold text-[#00a67e] leading-tight max-w-3xl mx-auto animate__animated animate__fadeInDown">
+        We help businesses and the<br />
+        people in them <span class="underline decoration-white decoration-2">thrive</span><span
+            class="text-[#00a67e]">.</span>
+    </h1>
+    <p
+        class="mt-3 max-w-xl mx-auto text-center text-sm sm:text-base font-normal text-white animate__animated animate__fadeInUp animate__delay-1s">
+        Across the globe, the companies we partner with are driving business transformation through people.
+    </p>
+
+    <!-- Circles Section -->
+    <section
+        class="mt-16 mb-16 flex flex-col sm:flex-row justify-center items-center gap-12 max-w-6xl mx-auto text-center">
+
+        <!-- Stat 1 -->
+        <div class="flex flex-col items-center group">
+            <div
+                class="relative w-44 h-44 rounded-full border-8 border-[#008a6a] border-t-[#00a67e] flex items-center justify-center overflow-hidden shadow-lg transition-transform duration-500 group-hover:scale-105 circle-spin">
+                <!-- White hover fill effect -->
+                <div
+                    class="absolute inset-0 bg-white opacity-0 scale-0 rounded-full transition-all duration-700 ease-out group-hover:opacity-20 group-hover:scale-125">
+                </div>
+                <span class="text-white text-4xl sm:text-5xl font-extrabold relative z-10">96%</span>
+            </div>
+            <p class="mt-4 max-w-[180px] text-sm text-white leading-snug">
+                We work with 96% of Fortune’s top 50 world’s most admired companies
+            </p>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="flex flex-col items-center group">
+            <div
+                class="relative w-44 h-44 rounded-full border-8 border-[#008a6a] border-t-[#00a67e] flex items-center justify-center overflow-hidden shadow-lg transition-transform duration-500 group-hover:scale-105 circle-spin-slow">
+                <!-- White hover fill effect -->
+                <div
+                    class="absolute inset-0 bg-white opacity-0 scale-0 rounded-full transition-all duration-700 ease-out group-hover:opacity-20 group-hover:scale-125">
+                </div>
+                <span class="text-white text-4xl sm:text-5xl font-extrabold relative z-10">75%</span>
+            </div>
+            <p class="mt-4 max-w-[180px] text-sm text-white leading-snug">
+                3 in every 4 of Fortune’s best companies to work for are Korn Ferry clients
+            </p>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="flex flex-col items-center group">
+            <div
+                class="relative w-44 h-44 rounded-full border-8 border-[#008a6a] border-t-[#00a67e] flex items-center justify-center overflow-hidden shadow-lg transition-transform duration-500 group-hover:scale-105 circle-spin-fast">
+                <!-- White hover fill effect -->
+                <div
+                    class="absolute inset-0 bg-white opacity-0 scale-0 rounded-full transition-all duration-700 ease-out group-hover:opacity-20 group-hover:scale-125">
+                </div>
+                <span class="text-white text-4xl sm:text-5xl font-extrabold relative z-10">80%</span>
+            </div>
+            <p class="mt-4 max-w-[180px] text-sm text-white leading-snug">
+                We work with 80% of the Drucker Institute’s top performing companies
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="mt-20 bg-[#004d48] py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Heading -->
+            <h3
+                class="text-[#17a77a] text-2xl sm:text-3xl md:text-4xl font-extrabold mb-10 sm:mb-12 text-center animate__animated animate__fadeInDown">
+                Change starts with a conversation
+            </h3>
+
+            <!-- Form -->
+            <form action="#" method="POST"
+                class="grid grid-cols-1 md:grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-4 sm:gap-y-6 text-black animate__animated animate__fadeInUp animate__delay-1s">
+
+                <!-- Name Fields -->
+                <input type="text" name="first_name" placeholder="First Name*" required
+                    class="p-3 sm:p-4 text-sm sm:text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 placeholder-gray-300 transition-all duration-300 hover:scale-105" />
+                <input type="text" name="last_name" placeholder="Last Name*" required
+                    class="p-3 sm:p-4 text-sm sm:text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 placeholder-gray-300 transition-all duration-300 hover:scale-105" />
+
+                <!-- Email & Phone -->
+                <input type="email" name="email" placeholder="Email*" required
+                    class="p-3 sm:p-4 text-sm sm:text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 placeholder-gray-300 transition-all duration-300 hover:scale-105" />
+                <input type="tel" name="phone" placeholder="Phone"
+                    class="p-3 sm:p-4 text-sm sm:text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 placeholder-gray-300 transition-all duration-300 hover:scale-105" />
+
+                <!-- Company & Job Title -->
+                <input type="text" name="company" placeholder="Company"
+                    class="p-3 sm:p-4 text-sm sm:text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 placeholder-gray-300 transition-all duration-300 hover:scale-105" />
+                <input type="text" name="job_title" placeholder="Job Title"
+                    class="p-3 sm:p-4 text-sm sm:text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 placeholder-gray-300 transition-all duration-300 hover:scale-105" />
+
+                <!-- Country & Industry -->
+                <select name="country" required
+                    class="p-3 sm:p-4 text-sm sm:text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300 hover:scale-105">
+                    <option value="">Country*</option>
+                    <option value="us">United States</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="ca">Canada</option>
+                </select>
+
+                <select name="industry"
+                    class="p-3 sm:p-4 text-sm sm:text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300 hover:scale-105">
+                    <option value="">Industry</option>
+                    <option value="tech">Technology</option>
+                    <option value="finance">Finance</option>
+                    <option value="health">Healthcare</option>
+                </select>
+
+                <!-- Checkbox -->
+                <label class="col-span-full flex items-center space-x-2 mt-3 text-sm sm:text-base">
+                    <input type="checkbox" required class="accent-green-400 w-4 sm:w-5 h-4 sm:h-5" />
+                    <span class="text-white">I consent to Korn Ferry’s terms and privacy policy.</span>
+                </label>
+
+                <!-- Submit Button -->
+                <button type="submit"
+                    class="bg-[#17a77a] hover:bg-green-700 text-white font-semibold py-3 sm:py-4 rounded-full col-span-full mt-6 text-sm sm:text-base transition-colors duration-300">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0a4a3a] text-white pt-10 pb-6 px-6 sm:px-10 lg:px-20">
+        <!-- Top Section: Logo + Social Icons -->
+        <div class="flex flex-col sm:flex-row justify-between items-center border-b border-white/30 pb-6">
+            <!-- Logo -->
+            <div class="flex items-center space-x-3 mb-4 sm:mb-0">
+                <img src="https://storage.googleapis.com/a1aa/image/5e1ba1d7-dd2e-489c-6f27-0a345eba8bfc.jpg"
+                    alt="Korn Ferry logo" class="w-10 h-10 object-contain" />
+                <span class="font-extrabold text-lg leading-none tracking-tight">
+                    KORN <br /> FERRY
+                </span>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="flex space-x-4 text-lg">
+                <a href="#" aria-label="LinkedIn" class="hover:text-gray-300"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Facebook" class="hover:text-gray-300"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="X" class="hover:text-gray-300"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="Instagram" class="hover:text-gray-300"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube" class="hover:text-gray-300"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Apple Music" class="hover:text-gray-300"><i class="fab fa-apple"></i></a>
+                <a href="#" aria-label="Spotify" class="hover:text-gray-300"><i class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+
+        <!-- Footer Links Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-y-6 gap-x-8 mt-8 max-w-[1200px] mx-auto">
+            <!-- Capabilities -->
+            <div>
+                <h3 class="font-bold mb-2 text-sm">Capabilities</h3>
+                <ul class="text-sm space-y-2 font-normal max-w-[140px]">
+                    <li>Business Transformation</li>
+                    <li>Organization Strategy</li>
+                    <li>Total Rewards</li>
+                    <li>Assessment & Succession</li>
+                    <li>Talent Acquisition</li>
+                    <li>Leadership & Professional Development</li>
+                </ul>
+            </div>
+
+            <!-- Products -->
+            <div>
+                <h3 class="font-bold mb-2 text-sm">Products</h3>
+                <ul class="text-sm space-y-2 font-normal max-w-[140px]">
+                    <li>Talent Suite Overview</li>
+                    <li>Korn Ferry Architect</li>
+                    <li>Korn Ferry Assess</li>
+                    <li>Korn Ferry Listen</li>
+                    <li>Korn Ferry Pay</li>
+                    <li>Korn Ferry Sell</li>
+                </ul>
+            </div>
+
+            <!-- Industries -->
+            <div>
+                <h3 class="font-bold mb-2 text-sm">Industries</h3>
+                <ul class="text-sm space-y-2 font-normal max-w-[140px]">
+                    <li>Consumer Markets</li>
+                    <li>Financial Services</li>
+                    <li>Healthcare</li>
+                    <li>Life Sciences</li>
+                    <li>Industrial</li>
+                    <li>Technology</li>
+                    <li>Government & Public Services</li>
+                </ul>
+            </div>
+
+            <!-- Functions -->
+            <div>
+                <h3 class="font-bold mb-2 text-sm">Functions</h3>
+                <ul class="text-sm space-y-2 font-normal max-w-[140px]">
+                    <li>Board & CEO Services</li>
+                    <li>Accounting</li>
+                    <li>Corporate Affairs</li>
+                    <li>Cybersecurity</li>
+                    <li>Financial Services</li>
+                    <li>Human Resources</li>
+                    <li>Information Technology</li>
+                    <li>Legal</li>
+                    <li>Marketing</li>
+                    <li>Risk Management</li>
+                    <li>Sales</li>
+                    <li>Supply Chain</li>
+                    <li>Sustainability</li>
+                </ul>
+            </div>
+
+            <!-- Careers -->
+            <div>
+                <h3 class="font-bold mb-2 text-sm">Careers</h3>
+                <ul class="text-sm space-y-2 font-normal max-w-[140px]">
+                    <li>Jobs with our clients</li>
+                    <li>Advance your career</li>
+                    <li>Join Korn Ferry</li>
+                </ul>
+            </div>
+
+            <!-- About -->
+            <div>
+                <h3 class="font-bold mb-2 text-sm">About</h3>
+                <ul class="text-sm space-y-2 font-normal max-w-[140px]">
+                    <li>Our Story</li>
+                    <li>Find a Consultant</li>
+                    <li>Find an Office</li>
+                    <li>Business Impact</li>
+                    <li>Corporate Responsibility</li>
+                    <li>Investor Relations</li>
+                    <li>Newsroom</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Links -->
+        <div
+            class="flex flex-wrap justify-center sm:justify-start gap-x-4 gap-y-2 text-xs mt-12 max-w-[1200px] mx-auto sm:mx-0">
+            <span>© 2025 Korn Ferry. All rights reserved.</span>
+            <a href="#" class="hover:underline">Contact</a>
+            <a href="#" class="hover:underline">Store</a>
+            <a href="#" class="hover:underline">Subscribe</a>
+            <a href="#" class="hover:underline">Terms</a>
+            <a href="#" class="hover:underline">Privacy</a>
+            <a href="#" class="hover:underline">Cookies</a>
+            <a href="#" class="hover:underline">Cookie Settings</a>
+            <a href="#" class="hover:underline">Do Not Sell My Info</a>
+            <a href="#" class="hover:underline">Accessibility</a>
+        </div>
+
+        <!-- Chat Button -->
+        <button aria-label="Chat support"
+            class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-[#0a4a3a] border border-white/20 flex items-center justify-center text-white shadow-lg hover:bg-[#0f6a54] transition">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8 10h.01M12 10h.01M16 10h.01M9 16h6m2 4H7a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2z" />
+            </svg>
+        </button>
+    </footer>
+</body>
+<script src="/js/index.js"></script>
+
+</html>
