@@ -1,4 +1,4 @@
-const allowedPages = ["home", "about", "services", "contacts", "industries", "blog"];
+const allowedPages = ["home", "about", "services", "contacts", "industries", "blog","data-entry","business-development","payroll-outsourcing"];
 const content = document.getElementById("content");
 
 // =======================
