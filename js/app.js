@@ -1,4 +1,26 @@
-const allowedPages = ["home", "about", "services", "contacts", "industries", "blog","data-entry","business-development","payroll-outsourcing"];
+const allowedPages = [
+        "home", 
+        "about",
+        "testimonials",
+        "services",
+        "contacts",
+        "industries",
+        "blog",
+        "recruitment-process-outsourcing",
+        "data-entry",
+        "business-development",
+        "payroll-outsourcing",
+        "billing-invoicing",
+        "purchase-order-processing",
+        "data-conversion",
+        "document-indexing",
+        "application-processing",
+        "accounting-data-entry",
+        "vms-msp-delivery",
+        // Industies pages 
+
+
+    ];
 const content = document.getElementById("content");
 
 // =======================
