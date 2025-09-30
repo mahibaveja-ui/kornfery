@@ -1,0 +1,98 @@
+      header nav {
+          background-color: transparent;
+      }
+
+
+      .cards {
+          perspective: 1000px;
+      }
+
+      .card {
+          border-radius: 10px;
+          position: relative;
+          transform-style: preserve-3d;
+          will-change: transform;
+          transition: transform 0.5s;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      .card:hover {
+          transform: translateZ(20px) rotateX(12deg) rotateY(12deg);
+      }
+
+      @keyframes spin-slow {
+          from {
+              transform: rotate(0deg);
+          }
+
+          to {
+              transform: rotate(360deg);
+          }
+      }
+
+      .circle-spin {
+          animation: spin-slow 12s linear infinite;
+      }
+
+      .circle-spin-slow {
+          animation: spin-slow 16s linear infinite;
+      }
+
+      .circle-spin-fast {
+          animation: spin-slow 8s linear infinite;
+      }
+
+
+
+      .challenge-btn {
+          border-radius: 9999px;
+          padding: 0.5rem 1.5rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          transition: all 0.4s ease;
+          background-color: transparent;
+      }
+
+      .challenge-btn:hover {
+          color: #111a26;
+          transform: translateY(-3px) scale(1.05);
+          box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .challenge-btn i {
+          transition: transform 0.3s ease;
+      }
+
+      #news-slider {
+          transition: transform 0.7s ease-in-out;
+      }
+
+      input,
+      select {
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+
+
+
+/* Scrollbar design for sidebar */
+.scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #6787b7 #3c506a;
+}
+
+.scrollbar-thumb-accent-dark {
+    background-color: #6787b7;
+}
+
+.scrollbar-track-secondary-bg{
+    background-color: #3c506a;
+   
+}
+
+#nav-toggle{
+    color:  red !important;
+    z-index: 999 !important;
+}
+
