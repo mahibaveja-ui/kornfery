@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
@@ -397,4 +398,397 @@
 </body>
 <script src="/js/index.js"></script>
 
+=======
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Korn Ferry Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script defer src="./js/app.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-bg': '#111a26',
+                        'secondary-bg': '#3c506a',
+                        'accent': '#97aad3',
+                        'accent-dark': '#6787b7',
+                        'dark-card': '#111a26',
+                        'border-card': '#3c506a',
+                        'text-accent': '#6787b7',
+                        'light-accent': '#97aad3',
+                        'medium-accent': '#6787b7',
+                        'button-hover': '#6787b7',
+                        'footer-bg': '#111a26',
+                        'news-text': '#3c506a',
+                        'feature-bg': '#97aad3',
+                        'form-bg': '#2a3e58',
+                        'hover-dark': '#1a2d45',
+                    },
+                    boxShadow: {
+                        'secondary': '0 4px 10px rgba(60, 80, 106, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        a {
+            color: #3c506a;
+        }
+    </style>
+
+    <link rel="stylesheet" href="./css/index.css">
+
+</head>
+
+<body class="bg-primary-bg text-white font-sans ">
+    <header id="navbar"
+        class="fixed top-0 left-0 w-full z-50 bg-transparent transition-all duration-500 shadow-secondary">
+        <nav class="flex items-center justify-between w-full px-4 sm:px-6 py-2 mx-auto relative">
+            <!-- Left: Logo -->
+            <a href="#" class="flex items-center flex-shrink-0">
+                <img src="./images/smartlinecore.jpg" alt="Logo"
+                    class="w-[100px] sm:w-[120px] h-[50px] sm:h-[60px] object-contain" />
+            </a>
+            <!-- Center: Desktop Nav -->
+            <ul class="hidden md:flex space-x-6 lg:space-x-8 font-semibold text-sm text-white relative">
+                <li><a href="home" class="nav-link hover:underline">Home</a></li>
+
+
+                <li><a href="testimonials" class="nav-link hover:underline">Testimonials</a></li>
+                <li><a href="contacts" class="nav-link hover:underline">Contacts</a></li>
+                <!-- Services Dropdown -->
+                <li class="group relative cursor-pointer">
+                    <a class="nav-link flex items-center">
+                        Services
+                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </a>
+
+                    <!-- Dropdown Menu -->
+                    <ul
+                        class="absolute left-0 top-full mt-3 ml-[-10px] w-64 bg-secondary-bg text-white rounded-lg shadow-[0_4px_15px_rgba(60,80,106,0.3)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transform -translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-50">
+
+                        <li>
+                            <a href="recruitment-process-outsourcing"
+                                class="block px-4 py-2 hover:bg-accent-dark rounded transition">
+                                  RPO
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="services"
+                                class="block px-4 py-2 hover:bg-accent-dark rounded transition">
+                                Back Office Services Overview
+                            </a>
+                        </li>
+
+                        <li><a href="data-entry" class="block px-4 py-2 hover:bg-accent-dark rounded">Data Entry</a>
+                        </li>
+                        <li><a href="business-development" class="block px-4 py-2 hover:bg-accent-dark rounded">Business
+                                Development</a></li>
+                        <li><a href="payroll-outsourcing" class="block px-4 py-2 hover:bg-accent-dark rounded">Payroll
+                                Outsourcing</a></li>
+                        <li><a href="billing-invoicing" class="block px-4 py-2 hover:bg-accent-dark rounded">Billing &
+                                Invoicing</a></li>
+                        <li><a href="purchase-order-processing"
+                                class="block px-4 py-2 hover:bg-accent-dark rounded">Purchase Order Processing</a></li>
+                        <li><a href="data-conversion" class="block px-4 py-2 hover:bg-accent-dark rounded">Data
+                                Conversion</a></li>
+                        <li><a href="document-indexing" class="block px-4 py-2 hover:bg-accent-dark rounded">Document
+                                Indexing</a></li>
+                        <li><a href="application-processing"
+                                class="block px-4 py-2 hover:bg-accent-dark rounded">Application Processing</a></li>
+                        <li><a href="accounting-data-entry"
+                                class="block px-4 py-2 hover:bg-accent-dark rounded">Accounting Data Entry</a></li>
+                        <li><a href="vms-msp-delivery" class="block px-4 py-2 hover:bg-accent-dark rounded">VMS/MSP
+                                Delivery Expert</a></li>
+                    </ul>
+                </li>
+
+                <!-- Industries Dropdown -->
+                <li class="group relative">
+                    <a class="nav-link hover:underline flex items-center">
+                        Industries
+                        <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </a>
+
+                    <!-- Dropdown Menu -->
+                    <ul
+                        class="absolute left-0 top-full mt-3 ml-[-10px] w-64 bg-secondary-bg text-white rounded-lg shadow-[0_4px_15px_rgba(60,80,106,0.3)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transform -translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-50">
+                        <li><a href="accounting-finance" class="block px-4 py-2 hover:bg-accent-dark rounded">Accounting
+                                & Finance</a></li>
+                        <li><a href="hospitality" class="block px-4 py-2 hover:bg-accent-dark rounded">Hospitality</a>
+                        </li>
+                        <li><a href="information-technology"
+                                class="block px-4 py-2 hover:bg-accent-dark rounded">Information Technology</a></li>
+                        <li><a href="engineering" class="block px-4 py-2 hover:bg-accent-dark rounded">Engineering</a>
+                        </li>
+                        <li><a href="manufacturing"
+                                class="block px-4 py-2 hover:bg-accent-dark rounded">Manufacturing</a></li>
+                        <li><a href="healthcare" class="block px-4 py-2 hover:bg-accent-dark rounded">Healthcare</a>
+                        </li>
+                        <li><a href="bfsi" class="block px-4 py-2 hover:bg-accent-dark rounded">BFSI</a></li>
+                        <li><a href="technology" class="block px-4 py-2 hover:bg-accent-dark rounded">Technology</a>
+                        </li>
+                        <li><a href="retail" class="block px-4 py-2 hover:bg-accent-dark rounded">Retail</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="blog" class="nav-link hover:underline">Blog</a></li>
+            </ul>
+
+            <!-- Right: Call Info (desktop only) -->
+            <div class="hidden md:flex items-center space-x-4 text-white text-sm">
+                <div class="h-8 border-l border-gray-300"></div>
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-phone-alt text-accent"></i>
+                    <span class="font-semibold">Call Anytime <br>+1 (847)-499-1240</span>
+                </div>
+            </div>
+
+            <!-- Mobile Toggle (always visible on small screens) -->
+            <button id="nav-toggle" class="md:hidden text-white text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Sidebar -->
+        <div id="mobile-nav"
+            class="fixed top-0 left-[-100%] w-64 h-full bg-secondary-bg text-white z-50 transition-left duration-300 py-6 shadow-secondary flex flex-col">
+
+            <!-- Header: Logo + Close -->
+            <div class="flex items-center justify-between mb-6 px-6">
+                <a href="#" class="flex items-center flex-shrink-0">
+                    <img src="./images/smartlinecore.jpg" alt="Logo"
+                        class="w-[100px] sm:w-[120px] h-[50px] sm:h-[60px] object-contain" />
+                </a>
+                <button id="mobile-close" class="text-white text-2xl"><i class="fas fa-times"> </i></button>
+            </div>
+
+            <!-- Menu with scroll -->
+            <div
+                class="flex-1 overflow-y-auto scrollbar-thin px-6 scrollbar-thumb-accent-dark scrollbar-track-secondary-bg">
+                <ul class="flex flex-col space-y-4 font-semibold text-sm">
+                    <li><a href="home" class="mobile-link">Home</a></li>
+                    <li><a href="about" class="mobile-link">About us</a></li>
+
+                    <!-- Services Dropdown -->
+                    <li>
+                        <button class="w-full text-left flex justify-between items-center mobile-dropdown-toggle">
+                            Services <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu max-h-0 overflow-hidden transition-all duration-300">
+                            <li><a href="data-entry" class="block px-4 py-2 hover:bg-accent-dark rounded">Data Entry</a>
+                            </li>
+                            <li><a href="business-development"
+                                    class="block px-4 py-2 hover:bg-accent-dark rounded">Business Development</a></li>
+                            <li><a href="payroll-outsourcing"
+                                    class="block px-4 py-2 hover:bg-accent-dark rounded">Payroll Outsourcing</a></li>
+                            <li><a href="billing-invoicing" class="block px-4 py-2 hover:bg-accent-dark rounded">Billing
+                                    & Invoicing</a></li>
+                            <li><a href="purchase-order-processing"
+                                    class="block px-4 py-2 hover:bg-accent-dark rounded">Purchase Order Processing</a>
+                            </li>
+                            <li><a href="data-conversion" class="block px-4 py-2 hover:bg-accent-dark rounded">Data
+                                    Conversion</a></li>
+                            <li><a href="document-indexing"
+                                    class="block px-4 py-2 hover:bg-accent-dark rounded">Document Indexing</a></li>
+                            <li><a href="application-processing"
+                                    class="block px-4 py-2 hover:bg-accent-dark rounded">Application Processing</a></li>
+                            <li><a href="accounting-data-entry"
+                                    class="block px-4 py-2 hover:bg-accent-dark rounded">Accounting Data Entry</a></li>
+                            <li><a href="vms-msp-delivery" class="block px-4 py-2 hover:bg-accent-dark rounded">VMS/MSP
+                                    Delivery</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Industries Dropdown -->
+                    <li>
+                        <button class="w-full text-left flex justify-between items-center mobile-dropdown-toggle">
+                            Industries <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <ul class="mobile-dropdown-menu max-h-0 overflow-hidden transition-all duration-300">
+                            <li><a href="accounting-finance"
+                                    class="block px-4 py-2 hover:bg-accent-dark rounded">Accounting & Finance</a></li>
+                            <li><a href="hospitality"
+                                    class="block px-4 py-2 hover:bg-accent-dark rounded">Hospitality</a></li>
+                            <li><a href="information-technology"
+                                    class="block px-4 py-2 hover:bg-accent-dark rounded">Information Technology</a></li>
+                            <li><a href="engineering"
+                                    class="block px-4 py-2 hover:bg-accent-dark rounded">Engineering</a></li>
+                            <li><a href="manufacturing"
+                                    class="block px-4 py-2 hover:bg-accent-dark rounded">Manufacturing</a></li>
+                            <li><a href="healthcare" class="block px-4 py-2 hover:bg-accent-dark rounded">Healthcare</a>
+                            </li>
+                            <li><a href="bfsi" class="block px-4 py-2 hover:bg-accent-dark rounded">BFSI</a></li>
+                            <li><a href="technology" class="block px-4 py-2 hover:bg-accent-dark rounded">Technology</a>
+                            </li>
+                            <li><a href="retail" class="block px-4 py-2 hover:bg-accent-dark rounded">Retail</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="blog" class="mobile-link">Blog</a></li>
+                    <li><a href="#" class="mobile-link">Call Anytime +1 (847)-499-1240</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="page" id="content">
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="bg-footer-bg text-white pt-8 sm:pt-10 pb-4 sm:pb-6 px-4 sm:px-6 lg:px-20">
+        <!-- Top Section: Logo + Social Icons -->
+        <div class="flex flex-col sm:flex-row justify-between items-center border-b border-white/30 pb-4 sm:pb-6">
+            <!-- Logo -->
+            <div class="flex items-center space-x mb-4 sm:mb-0">
+                <img src="./images/smartlinecore.jpg" alt="smart line core "
+                    class="w-20 rotate-90 sm:w-10 h-20 sm:h-10 object-contain" />
+                <span class="font-extrabold text-md m:text-lg leading-none tracking-tight">
+                    SMART LINE<br /> CORE
+                </span>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="flex space-x-3 sm:space-x-4 text-base sm:text-lg">
+                <a href="#" aria-label="LinkedIn" class="hover:text-gray-300"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Facebook" class="hover:text-gray-300"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="X" class="hover:text-gray-300"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="Instagram" class="hover:text-gray-300"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube" class="hover:text-gray-300"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Apple Music" class="hover:text-gray-300"><i class="fab fa-apple"></i></a>
+                <a href="#" aria-label="Spotify" class="hover:text-gray-300"><i class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+
+        <!-- Footer Links Grid -->
+        <div
+            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-y-4 sm:gap-y-6 gap-x-4 sm:gap-x-8 mt-6 sm:mt-8 max-w-[1200px] mx-auto text-xs sm:text-sm">
+            <!-- Capabilities -->
+            <div>
+                <h3 class="font-bold mb-2">Capabilities</h3>
+                <ul class="space-y-2 font-normal max-w-[140px]">
+                    <li>Business Transformation</li>
+                    <li>Organization Strategy</li>
+                    <li>Total Rewards</li>
+                    <li>Assessment & Succession</li>
+                    <li>Talent Acquisition</li>
+                    <li>Leadership & Professional Development</li>
+                </ul>
+            </div>
+
+            <!-- Products -->
+            <div>
+                <h3 class="font-bold mb-2">Products</h3>
+                <ul class="space-y-2 font-normal max-w-[140px]">
+                    <li>Talent Suite Overview</li>
+                    <li>Korn Ferry Architect</li>
+                    <li>Korn Ferry Assess</li>
+                    <li>Korn Ferry Listen</li>
+                    <li>Korn Ferry Pay</li>
+                    <li>Korn Ferry Sell</li>
+                </ul>
+            </div>
+
+            <!-- Industries -->
+            <div>
+                <h3 class="font-bold mb-2">Industries</h3>
+                <ul class="space-y-2 font-normal max-w-[140px]">
+                    <li>Consumer Markets</li>
+                    <li>Financial Services</li>
+                    <li>Healthcare</li>
+                    <li>Life Sciences</li>
+                    <li>Industrial</li>
+                    <li>Technology</li>
+                    <li>Government & Public Services</li>
+                </ul>
+            </div>
+
+            <!-- Functions -->
+            <div>
+                <h3 class="font-bold mb-2">Functions</h3>
+                <ul class="space-y-2 font-normal max-w-[140px]">
+                    <li>Board & CEO Services</li>
+                    <li>Accounting</li>
+                    <li>Corporate Affairs</li>
+                    <li>Cybersecurity</li>
+                    <li>Financial Services</li>
+                    <li>Human Resources</li>
+                    <li>Information Technology</li>
+                    <li>Legal</li>
+                    <li>Marketing</li>
+                    <li>Risk Management</li>
+                    <li>Sales</li>
+                    <li>Supply Chain</li>
+                    <li>Sustainability</li>
+                </ul>
+            </div>
+
+            <!-- Careers -->
+            <div>
+                <h3 class="font-bold mb-2">Careers</h3>
+                <ul class="space-y-2 font-normal max-w-[140px]">
+                    <li>Jobs with our clients</li>
+                    <li>Advance your career</li>
+                    <li>Join Korn Ferry</li>
+                </ul>
+            </div>
+
+            <!-- About -->
+            <div>
+                <h3 class="font-bold mb-2">About</h3>
+                <ul class="space-y-2 font-normal max-w-[140px]">
+                    <li>Our Story</li>
+                    <li>Find a Consultant</li>
+                    <li>Find an Office</li>
+                    <li>Business Impact</li>
+                    <li>Corporate Responsibility</li>
+                    <li>Investor Relations</li>
+                    <li>Newsroom</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Links -->
+        <div
+            class="flex flex-wrap justify-center sm:justify-start gap-x-3 sm:gap-x-4 gap-y-2 text-xs mt-8 sm:mt-12 max-w-[1200px] mx-auto sm:mx-0">
+            <span>© 2025 Korn Ferry. All rights reserved.</span>
+            <a href="#" class="hover:underline">Contact</a>
+            <a href="#" class="hover:underline">Store</a>
+            <a href="#" class="hover:underline">Subscribe</a>
+            <a href="#" class="hover:underline">Terms</a>
+            <a href="#" class="hover:underline">Privacy</a>
+            <a href="#" class="hover:underline">Cookies</a>
+            <a href="#" class="hover:underline">Cookie Settings</a>
+            <a href="#" class="hover:underline">Do Not Sell My Info</a>
+            <a href="#" class="hover:underline">Accessibility</a>
+        </div>
+
+        <!-- Chat Button -->
+        <button aria-label="Chat support"
+            class="fixed bottom-6 right-6 w-12 sm:w-14 h-12 sm:h-14 rounded-full bg-footer-bg border border-white/20 flex items-center justify-center text-white shadow-lg hover:bg-hover-dark transition">
+            <svg class="h-5 sm:h-6 w-5 sm:w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8 10h.01M12 10h.01M16 10h.01M9 16h6m2 4H7a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2z" />
+            </svg>
+        </button>
+    </footer>
+</body>
+<script src="/js/index.js"></script>
+
+>>>>>>> d8d79c0ebc13df8f4d90081af7e6de945d5a3a9d
 </html>
