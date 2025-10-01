@@ -121,4 +121,62 @@ window.addEventListener('load', () => {
     // Initialize animated elements
     animatedElements = document.querySelectorAll('[data-animate]');
     animateOnScroll();
+    
 });
+
+
+
+window.onload = () => {
+  const carousel = document.getElementById("appleCarousel");
+  if (!carousel) {
+    console.error("Carousel element not found!");
+    return;
+  }
+
+  const cards = carousel.querySelectorAll(".carousel-card");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  let autoScrollInterval;
+
+  function updateActiveCard() {
+    let center = carousel.scrollLeft + carousel.offsetWidth / 2;
+    cards.forEach((card) => {
+      let cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      let diff = Math.abs(center - cardCenter);
+      card.classList.remove("active");
+      if (diff < card.offsetWidth / 2) {
+        card.classList.add("active");
+      }
+    });
+  }
+
+  function scrollCarousel(direction = 1) {
+    const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(cards[0]).marginRight);
+    carousel.scrollBy({ left: direction * cardWidth, behavior: "smooth" });
+  }
+
+  prevBtn.addEventListener("click", () => scrollCarousel(-1));
+  nextBtn.addEventListener("click", () => scrollCarousel(1));
+
+  function startAutoScroll() {
+    autoScrollInterval = setInterval(() => {
+      const lastCard = cards[cards.length - 1];
+      const carouselRight = carousel.scrollLeft + carousel.offsetWidth;
+      if (carouselRight >= lastCard.offsetLeft + lastCard.offsetWidth) {
+        carousel.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scrollCarousel(1);
+      }
+    }, 4000);
+  }
+
+  carousel.addEventListener("mouseenter", () => clearInterval(autoScrollInterval));
+  carousel.addEventListener("mouseleave", startAutoScroll);
+
+  carousel.addEventListener("scroll", updateActiveCard);
+  window.addEventListener("resize", updateActiveCard);
+
+  updateActiveCard();
+  startAutoScroll();
+};
