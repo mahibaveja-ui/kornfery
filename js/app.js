@@ -23,7 +23,7 @@ const allowedPages = [
     "msp_support",
     "workload_management",
     "back_end_support_system",
-    "staff_augmentation",
+    "staff-augmentation",
     "rpo_talent_sourcing_screening",
     "background_checks_coordination",
     "onboarding_documentation_support",
@@ -56,7 +56,10 @@ function preloadImages(container) {
 // Load page dynamically
 // =======================
 function loadPage(page) {
+    
     if (!allowedPages.includes(page)) {
+    
+
         content.innerHTML = `<div style="padding:50px; text-align:center;">
             <h1 style="color:red; font-size:36px;">404 - Page Not Found</h1>
             <p>The page "${page}" you are looking for does not exist.</p>
@@ -74,6 +77,7 @@ function loadPage(page) {
             return res.text();
         })
         .then(data => {
+            
             content.innerHTML = data;
             return preloadImages(content); // wait for all images
         })

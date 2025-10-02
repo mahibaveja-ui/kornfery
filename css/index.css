@@ -189,6 +189,7 @@
   border-radius: 0.5rem;
   color: #ffffff; /* white text */
   transition: background-color 0.3s;
+  background-color: #1d8ed0;
 }
 .btn-link:hover {
   background-color: #1d8ed0; /* darker blue hover */
