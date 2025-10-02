@@ -101,6 +101,7 @@
 
   .carousel-card {
   min-width: 80%;
+  height: 400px !important;
   margin-right: 1rem;
   background-color: #1f1f2a;  /* dark-card */
   color: #ffffff;             /* white text */
@@ -111,7 +112,25 @@
   transition: all 0.5s ease-in-out;
   filter: blur(2px) scale(0.9);
   opacity: 0.6;
+  position: relative !important; 
+  border: 1px solid #1d8ed0;
+  box-shadow: 0 4px 10px rgba(60, 80, 106, 0.5) !important;
 }
+
+.carousel-card div{
+  position: absolute !important;
+  bottom: 0  !important;
+}
+
+.carousel-card div p{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;   /* Sirf 3 line dikhayega */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
 @media (min-width: 768px) {
   .carousel-card {
     min-width: 40%;
@@ -124,6 +143,8 @@
 }
 
 .carousel-card.active {
+  margin-top: 12px;
+  transition: all ease 0.5s !important;
   filter: blur(0) scale(1);
   opacity: 1;
   background-color: #222933; /* secondary-bg highlight */
@@ -131,7 +152,7 @@
 
 .card-img {
   width: 100%;
-  height: 240px;  /* h-60 */
+  height: 140px !important;  /* h-60 */
   object-fit: cover;
   transition: transform 0.5s;
 }
@@ -143,7 +164,8 @@
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #38B6FC; /* text-accent blue */
+  color: white !important; /* text-accent blue */
+  background-color: #38B6FC;
 }
 
 .card-title {
@@ -178,3 +200,27 @@
 body.loading #content {
     display: none;
 }
+
+
+/* Ensure smooth scrolling and snap behavior */
+#appleCarousel {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* Improves scrolling on mobile */
+}
+
+/* Hide scrollbar consistently across browsers */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Active card styling for better UX */
+.carousel-card.active {
+  transform: scale(1.05); /* Slightly enlarge active card */
+  transition: transform 0.3s ease;
+}
+

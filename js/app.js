@@ -30,7 +30,8 @@ const allowedPages = [
     "training_development_content",
     "administrative_support",
     "operational_back_office",
-    "add-ons"
+    "add-ons",
+    "Industries"
 ];
 
 const content = document.getElementById("content");

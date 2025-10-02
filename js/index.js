@@ -125,58 +125,160 @@ window.addEventListener('load', () => {
 });
 
 
+// Utility to wait for elements (plural support)
+function waitForElements(selector, callback, timeout = 10000) {
+  console.log(`[waitForElements] Searching for elements "${selector}"`);
 
-window.onload = () => {
-  const carousel = document.getElementById("appleCarousel");
-  if (!carousel) {
-    console.error("Carousel element not found!");
+  const elements = document.querySelectorAll(selector);
+  if (elements.length > 0) {
+    console.log(`[waitForElements] Found ${elements.length} elements immediately`);
+    callback(elements);
     return;
   }
 
-  const cards = carousel.querySelectorAll(".carousel-card");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
+  const start = Date.now();
+  const interval = setInterval(() => {
+    const elements = document.querySelectorAll(selector);
+    if (elements.length > 0) {
+      console.log(`[waitForElements] Found ${elements.length} elements after ${Date.now() - start}ms`);
+      clearInterval(interval);
+      callback(elements);
+    } else if (Date.now() - start > timeout) {
+      console.error(`[waitForElements] Elements with selector "${selector}" not found after ${timeout}ms`);
+      clearInterval(interval);
+    }
+  }, 100);
+
+  const observer = new MutationObserver(() => {
+    const elements = document.querySelectorAll(selector);
+    if (elements.length > 0) {
+      console.log(`[waitForElements] Found ${elements.length} elements via MutationObserver`);
+      clearInterval(interval);
+      observer.disconnect();
+      callback(elements);
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  setTimeout(() => {
+    observer.disconnect();
+    console.log(`[waitForElements] Stopped MutationObserver for "${selector}"`);
+  }, timeout);
+}
+
+// Main carousel initializer (can handle multiple carousels)
+function initializeCarousel(carousel) {
+  console.log('[initializeCarousel] Carousel element found:', carousel);
+
+  const prevBtn = carousel.parentElement.querySelector('#prevBtn');
+  const nextBtn = carousel.parentElement.querySelector('#nextBtn');
+  const cards = carousel.querySelectorAll('.carousel-card');
+
+  if (!cards.length) {
+    console.error('[initializeCarousel] No carousel cards found!');
+    return;
+  }
+
+  console.log(`[initializeCarousel] Found ${cards.length} carousel cards`);
 
   let autoScrollInterval;
 
-  function updateActiveCard() {
-    let center = carousel.scrollLeft + carousel.offsetWidth / 2;
-    cards.forEach((card) => {
-      let cardCenter = card.offsetLeft + card.offsetWidth / 2;
-      let diff = Math.abs(center - cardCenter);
-      card.classList.remove("active");
+  // Debounce
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  // Update active card
+  const updateActiveCard = debounce(() => {
+    const center = carousel.scrollLeft + carousel.offsetWidth / 2;
+    cards.forEach((card, index) => {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const diff = Math.abs(center - cardCenter);
+      card.classList.remove('active');
       if (diff < card.offsetWidth / 2) {
-        card.classList.add("active");
+        card.classList.add('active');
+        console.log(`[updateActiveCard] Active card: ${index}`);
       }
     });
-  }
+  }, 100);
 
+  // Scroll by one card
   function scrollCarousel(direction = 1) {
-    const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(cards[0]).marginRight);
-    carousel.scrollBy({ left: direction * cardWidth, behavior: "smooth" });
+    const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(cards[0]).marginRight || 0);
+    carousel.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+    console.log(`[scrollCarousel] Scrolling ${direction > 0 ? 'forward' : 'backward'}`);
   }
 
-  prevBtn.addEventListener("click", () => scrollCarousel(-1));
-  nextBtn.addEventListener("click", () => scrollCarousel(1));
-
+  // Auto scroll
   function startAutoScroll() {
     autoScrollInterval = setInterval(() => {
       const lastCard = cards[cards.length - 1];
       const carouselRight = carousel.scrollLeft + carousel.offsetWidth;
-      if (carouselRight >= lastCard.offsetLeft + lastCard.offsetWidth) {
-        carousel.scrollTo({ left: 0, behavior: "smooth" });
+      if (carouselRight >= lastCard.offsetLeft + lastCard.offsetWidth - 10) {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+        console.log('[startAutoScroll] Reset to start');
       } else {
         scrollCarousel(1);
       }
     }, 4000);
+    console.log('[startAutoScroll] Auto-scroll started');
   }
 
-  carousel.addEventListener("mouseenter", () => clearInterval(autoScrollInterval));
-  carousel.addEventListener("mouseleave", startAutoScroll);
+  // Event listeners
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      clearInterval(autoScrollInterval);
+      scrollCarousel(-1);
+      console.log('[prevBtn] Clicked previous button');
+    });
+  }
 
-  carousel.addEventListener("scroll", updateActiveCard);
-  window.addEventListener("resize", updateActiveCard);
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      clearInterval(autoScrollInterval);
+      scrollCarousel(1);
+      console.log('[nextBtn] Clicked next button');
+    });
+  }
 
+  carousel.addEventListener('mouseenter', () => {
+    clearInterval(autoScrollInterval);
+    console.log('[carousel] Mouse entered, auto-scroll paused');
+  });
+
+  carousel.addEventListener('mouseleave', () => {
+    startAutoScroll();
+    console.log('[carousel] Mouse left, auto-scroll resumed');
+  });
+
+  carousel.addEventListener('scroll', updateActiveCard);
+  window.addEventListener('resize', updateActiveCard);
+
+  // Lazy load images
+  const images = carousel.querySelectorAll('.card-img');
+  images.forEach((img, index) => {
+    img.setAttribute('loading', 'lazy');
+    console.log(`[initializeCarousel] Set lazy loading for image ${index}: ${img.src}`);
+  });
+
+  // Initial setup
   updateActiveCard();
   startAutoScroll();
-};
+}
+
+// Run initialization on DOM load
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('[DOMContentLoaded] DOM fully loaded, initializing carousels');
+  waitForElements('.carousel-wrapper, #appleCarousel', (carousels) => {
+    carousels.forEach((carousel) => initializeCarousel(carousel));
+  });
+});
