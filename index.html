@@ -59,22 +59,18 @@
 </head>
 
 <body class="bg-primary-bg text-white font-sans ">
-
-
     <div id="page-loader" class="fixed inset-0 bg-primary-bg flex items-center justify-center z-[9999]">
-        <div class="loader animate-spin border-8 border-t-accent-dark border-gray-200 rounded-full w-16 h-16"></div>
+        <div class="relative flex flex-col items-center">
+            <!-- Logo -->
+            <img src="images/smartlinecore.jpg" alt="Smartline Core Logo"
+                class="w-20 h-20 object-contain animate-bounce-slow" />
+
+            <!-- Text under logo (optional) -->
+            <p class="mt-4 text-accent font-bold tracking-wide animate-fadeIn">
+                Loading...
+            </p>
+        </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
     <header id="navbar" class="fixed top-0 left-0 w-full z-50 bg-transparent transition-all duration-500 ">
         <nav class="flex items-center justify-between w-full px-4 sm:px-6 py-2 mx-auto relative">
             <!-- Left: Logo -->
@@ -89,6 +85,7 @@
 
                 <li><a href="testimonials" class="nav-link hover:underline">Testimonials</a></li>
                 <li><a href="contacts" class="nav-link hover:underline">Contacts</a></li>
+                <li><a href="about" class="nav-link hover:underline">About Us</a></li>
                 <!-- Services Dropdown -->
                 <li class="group relative cursor-pointer">
                     <a href="services" class="nav-link flex items-center">
@@ -230,7 +227,6 @@
 
                 </li>
 
-                <li><a href="blog" class="nav-link hover:underline">Blog</a></li>
             </ul>
 
             <!-- Right: Call Info (desktop only) -->
@@ -342,135 +338,198 @@
 
     </div>
 
-
     <!-- Footer -->
-    <footer class="bg-footer-bg text-white pt-8 sm:pt-10 pb-4 sm:pb-6 px-4 sm:px-6 lg:px-20">
-        <!-- Top Section: Logo + Social Icons -->
-        <div class="flex flex-col sm:flex-row justify-between items-center border-b border-white/30 pb-4 sm:pb-6">
-            <!-- Logo -->
-            <div class="flex items-center space-x mb-4 sm:mb-0">
-                <img src="./images/smartlinecore.jpg" alt="smart line core "
-                    class="w-20 rotate-90 sm:w-10 h-20 sm:h-10 object-contain" />
-                <span class="font-extrabold text-md m:text-lg leading-none tracking-tight">
-                    SMART LINE<br /> CORE
-                </span>
+    <footer
+        class="relative bg-gradient-to-b from-[#0d0d0d] via-[#111111] to-[#0a0a0a] text-white pt-14 pb-10 px-6 lg:px-20 overflow-hidden">
+
+        <!-- Background Glow -->
+        <div
+            class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top_left,rgba(0,255,200,0.4),transparent_70%)] pointer-events-none">
+        </div>
+
+        <div class="relative max-w-[1300px] mx-auto border-b border-white/20 pb-12">
+
+            <!-- Headline -->
+            <div class="text-center mb-12 animate-fadeInUp">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-accent">Let's Secure Your Next Hire – Connect Today
+                </h2>
+                <p class="text-gray-400 mt-2 text-sm sm:text-base">US direct line:
+                    <span class="font-semibold text-white">+1 (516) 417-8110</span>. Ready for RPO insights?
+                </p>
             </div>
 
-            <!-- Social Icons -->
-            <div class="flex space-x-3 sm:space-x-4 text-base sm:text-lg">
-                <a href="#" aria-label="LinkedIn" class="hover:text-gray-300"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="Facebook" class="hover:text-gray-300"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="X" class="hover:text-gray-300"><i class="fab fa-x-twitter"></i></a>
-                <a href="#" aria-label="Instagram" class="hover:text-gray-300"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="YouTube" class="hover:text-gray-300"><i class="fab fa-youtube"></i></a>
-                <a href="#" aria-label="Apple Music" class="hover:text-gray-300"><i class="fab fa-apple"></i></a>
-                <a href="#" aria-label="Spotify" class="hover:text-gray-300"><i class="fab fa-spotify"></i></a>
+            <!-- Contact Section Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- Contact Form Card -->
+                <div
+                    class="bg-black/40 border border-gray-700 rounded-xl p-6 shadow-lg hover:shadow-accent/30 transition animate-fadeInUp">
+                    <h3 class="text-lg font-semibold mb-4 text-accent">Send Us a Message</h3>
+                    <form class="space-y-3">
+                        <input type="text" placeholder="Your Name"
+                            class="w-full p-3 rounded-lg bg-black/60 border border-gray-700 focus:border-accent focus:ring focus:ring-accent/30 text-sm text-white transition" />
+                        <input type="email" placeholder="Email Address"
+                            class="w-full p-3 rounded-lg bg-black/60 border border-gray-700 focus:border-accent focus:ring focus:ring-accent/30 text-sm text-white transition" />
+                        <input type="text" placeholder="Company"
+                            class="w-full p-3 rounded-lg bg-black/60 border border-gray-700 focus:border-accent focus:ring focus:ring-accent/30 text-sm text-white transition" />
+                        <textarea placeholder="Message" rows="3"
+                            class="w-full p-3 rounded-lg bg-black/60 border border-gray-700 focus:border-accent focus:ring focus:ring-accent/30 text-sm text-white transition"></textarea>
+
+                        <button type="submit"
+                            class="w-full bg-accent text-black font-semibold py-3 px-6 rounded-lg shadow-lg hover:scale-[1.02] hover:shadow-accent/40 transition duration-300">
+                            Submit – Respond in 2 Hours.
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Details Card -->
+                <div
+                    class="bg-black/40 border border-gray-700 rounded-xl p-6 shadow-lg hover:shadow-accent/30 transition animate-fadeInUp delay-100">
+                    <h3 class="text-lg font-semibold mb-4 text-accent">Contact Information</h3>
+                    <ul class="space-y-4 text-gray-300 text-sm">
+                        <li class="flex items-start space-x-3">
+                            <span class="text-accent text-lg">📍</span>
+                            <p>1604 Capitol Ave, Cheyenne, WY 82001</p>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-accent text-lg">📞</span>
+                            <p>+1 (516) 417-8110</p>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-accent text-lg">✉</span>
+                            <p>info@smartlinecore.com</p>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-accent text-lg">⏰</span>
+                            <p>Mon-Fri, 9 AM - 6 PM MT</p>
+                        </li>
+                    </ul>
+
+                    <!-- Social Icons -->
+                    <div class="flex space-x-5 mt-6 text-lg">
+                        <a href="#" aria-label="LinkedIn"
+                            class="hover:text-accent transition transform hover:scale-110"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"
+                            class="hover:text-accent transition transform hover:scale-110"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"
+                            class="hover:text-accent transition transform hover:scale-110"><i
+                                class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Map Card -->
+                <div
+                    class="bg-black/40 border border-gray-700 rounded-xl p-4 shadow-lg hover:shadow-accent/30 transition animate-fadeInUp delay-200">
+                    <h3 class="text-lg font-semibold mb-4 text-accent">Our Location</h3>
+                    <div
+                        class="rounded-lg overflow-hidden shadow-md border border-gray-700 hover:scale-[1.01] transition">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.057155001839!2d-104.82024628459495!3d41.14002977928807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8764f88dcd6c2c39%3A0xa74c5d25d7f2c8f2!2s1604%20Capitol%20Ave%2C%20Cheyenne%2C%20WY%2082001!5e0!3m2!1sen!2sus!4v1700000000000"
+                            width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <!-- Footer Links Grid -->
+        <!-- Right Side Links -->
         <div
-            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-y-4 sm:gap-y-6 gap-x-4 sm:gap-x-8 mt-6 sm:mt-8 max-w-[1200px] mx-auto text-xs sm:text-sm">
-            <!-- Capabilities -->
-            <div>
-                <h3 class="font-bold mb-2">Capabilities</h3>
-                <ul class="space-y-2 font-normal max-w-[140px]">
-                    <li>Business Transformation</li>
-                    <li>Organization Strategy</li>
-                    <li>Total Rewards</li>
-                    <li>Assessment & Succession</li>
-                    <li>Talent Acquisition</li>
-                    <li>Leadership & Professional Development</li>
-                </ul>
-            </div>
-
-            <!-- Products -->
-            <div>
-                <h3 class="font-bold mb-2">Products</h3>
-                <ul class="space-y-2 font-normal max-w-[140px]">
-                    <li>Talent Suite Overview</li>
-                    <li>Korn Ferry Architect</li>
-                    <li>Korn Ferry Assess</li>
-                    <li>Korn Ferry Listen</li>
-                    <li>Korn Ferry Pay</li>
-                    <li>Korn Ferry Sell</li>
-                </ul>
-            </div>
+            class="relative mt-12 max-w-[1300px] mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 animate-fadeInUp">
 
             <!-- Industries -->
+            <!-- Industries -->
             <div>
-                <h3 class="font-bold mb-2">Industries</h3>
-                <ul class="space-y-2 font-normal max-w-[140px]">
-                    <li>Consumer Markets</li>
-                    <li>Financial Services</li>
-                    <li>Healthcare</li>
-                    <li>Life Sciences</li>
-                    <li>Industrial</li>
-                    <li>Technology</li>
-                    <li>Government & Public Services</li>
+                <h3 class="font-bold mb-3 text-accent">Industries</h3>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="#consumer-brands" class="hover:text-white transition">Consumer
+                            Markets</a></li>
+                    <li><a href="#bfsi-talent" class="hover:text-white transition">BFSI</a></li>
+                    <li><a href="#healthcare-talent" class="hover:text-white transition">Healthcare</a></li>
+                    <li><a href="#life-sciences" class="hover:text-white transition">Life Sciences</a>
+                    </li>
+                    <li><a href="#engineering-staffing" class="hover:text-white transition">Engineering</a></li>
+                    <li><a href="#manufacturing-recruitment" class="hover:text-white transition">Manufacturing</a>
+                    </li>
+                    <li><a href="#it-recruitment" class="hover:text-white transition">IT</a></li>
+                    <li><a href="#pharma" class="hover:text-white transition">Pharma</a></li>
+                    <li><a href="#supply_chain" class="hover:text-white transition">Supply Chain</a>
+                    </li>
+                    <li><a href="#add-ons" class="hover:text-white transition">Add-Ons</a></li>
                 </ul>
             </div>
 
             <!-- Functions -->
             <div>
-                <h3 class="font-bold mb-2">Functions</h3>
-                <ul class="space-y-2 font-normal max-w-[140px]">
-                    <li>Board & CEO Services</li>
-                    <li>Accounting</li>
-                    <li>Corporate Affairs</li>
-                    <li>Cybersecurity</li>
-                    <li>Financial Services</li>
-                    <li>Human Resources</li>
-                    <li>Information Technology</li>
-                    <li>Legal</li>
-                    <li>Marketing</li>
-                    <li>Risk Management</li>
-                    <li>Sales</li>
-                    <li>Supply Chain</li>
-                    <li>Sustainability</li>
+                <h3 class="font-bold mb-3 text-accent">Functions</h3>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="#recruitment-support" class="hover:text-white transition">Recruitment
+                            Support</a></li>
+                    <li><a href="#managed-searches" class="hover:text-white transition">Managed
+                            Searches</a></li>
+                    <li><a href="#msp_support" class="hover:text-white transition">MSP Support</a></li>
+                    <li><a href="#workload_management" class="hover:text-white transition">Workload
+                            Management</a></li>
+                    <li><a href="#staff-augmentation" class="hover:text-white transition">Staff
+                            Augmentation</a></li>
+                    <li><a href="#training_development_content" class="hover:text-white transition">Training
+                            Content</a></li>
+                    <li><a href="#administrative_support" class="hover:text-white transition">Admin Support</a>
+                    </li>
+                    <li><a href="#add-ons" class="hover:text-white transition">Virtual
+                            Assistance</a></li>
                 </ul>
             </div>
-
-            <!-- Careers -->
+            <!-- Services -->
             <div>
-                <h3 class="font-bold mb-2">Careers</h3>
-                <ul class="space-y-2 font-normal max-w-[140px]">
-                    <li>Jobs with our clients</li>
-                    <li>Advance your career</li>
-                    <li>Join Korn Ferry</li>
+                <h3 class="font-bold mb-3 text-accent">Services</h3>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="#rpo_talent_sourcing_screening" class="hover:text-white transition">RPO (Talent
+                            Sourcing)</a></li>
+                    <li><a href="#background_checks_coordination" class="hover:text-white transition">Background
+                            Checks</a></li>
+                    <li><a href="#onboarding_documentation_support" class="hover:text-white transition">Onboarding
+                            Docs</a>
+                    </li>
+                    <li><a href="#operational_back_office" class="hover:text-white transition">Operational
+                            Back Office</a></li>
+                    <li><a href="#add-ons" class="hover:text-white transition">Add-Ons</a></li>
                 </ul>
             </div>
 
             <!-- About -->
             <div>
-                <h3 class="font-bold mb-2">About</h3>
-                <ul class="space-y-2 font-normal max-w-[140px]">
-                    <li>Our Story</li>
-                    <li>Find a Consultant</li>
-                    <li>Find an Office</li>
-                    <li>Business Impact</li>
-                    <li>Corporate Responsibility</li>
-                    <li>Investor Relations</li>
-                    <li>Newsroom</li>
+                <h3 class="font-bold mb-3 text-accent">About</h3>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="#our-story" class="hover:text-white transition">Our Story</a></li>
+                    <li><a href="#our-policy" class="hover:text-white transition">Our Policy</a></li>
+                    <li><a href="#find-us" class="hover:text-white transition">Find Us</a></li>
+                    <li><a href="#terms-conditions" class="hover:text-white transition">Conditions (T&C)</a>
+                    </li>
+                    <li><a href="#our-mission" class="hover:text-white transition">Our Mission</a></li>
+                    <li><a href="#unique-approach" class="hover:text-white transition">Our Unique
+                            Approach</a></li>
                 </ul>
             </div>
+
         </div>
 
-        <!-- Bottom Links -->
+        <!-- Bottom Section -->
         <div
-            class="flex flex-wrap justify-center sm:justify-start gap-x-3 sm:gap-x-4 gap-y-2 text-xs mt-8 sm:mt-12 max-w-[1200px] mx-auto sm:mx-0">
-            <span>© 2025 Korn Ferry. All rights reserved.</span>
-            <a href="#" class="hover:underline">Contact</a>
-            <a href="#" class="hover:underline">Store</a>
-            <a href="#" class="hover:underline">Subscribe</a>
-            <a href="#" class="hover:underline">Terms</a>
-            <a href="#" class="hover:underline">Privacy</a>
-            <a href="#" class="hover:underline">Cookies</a>
-            <a href="#" class="hover:underline">Cookie Settings</a>
-            <a href="#" class="hover:underline">Do Not Sell My Info</a>
-            <a href="#" class="hover:underline">Accessibility</a>
+            class="relative flex flex-wrap justify-center sm:justify-between items-center text-xs text-gray-500 mt-10 max-w-[1300px] mx-auto">
+            <span>© 2025 Smart Line Core. All rights reserved.</span>
+            <div class="flex flex-wrap gap-4 mt-3 sm:mt-0">
+                <a href="#" class="hover:text-accent transition">Subscribe</a>
+                <a href="#" class="hover:text-accent transition">Terms</a>
+                <a href="#" class="hover:text-accent transition">Privacy</a>
+                <a href="#" class="hover:text-accent transition">Cookies</a>
+                <a href="#" class="hover:text-accent transition">Cookie Settings</a>
+            </div>
         </div>
     </footer>
+
 </body>
 
 
