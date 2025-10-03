@@ -31,7 +31,16 @@ const allowedPages = [
     "administrative_support",
     "operational_back_office",
     "add-ons",
-    "Industries"
+    "industries",
+    "healthcare-talent",
+    "it-recruitment",
+    "life-sciences",
+    "engineering-staffing",
+    "manufacturing-recruitment",
+    "bfsi-talent",
+    "consumer-brands",
+    "supply_chain",
+    "pharma"
 ];
 
 const content = document.getElementById("content");
